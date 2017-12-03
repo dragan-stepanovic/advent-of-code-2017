@@ -44,7 +44,7 @@ def calculate_division_checksum(spreadsheet):
             except_column = row[:index] + row[(index + 1):]
             for item in except_column:
                 if item % column == 0:
-                    result +=item // column
+                    result += item // column
 
     return result
 
