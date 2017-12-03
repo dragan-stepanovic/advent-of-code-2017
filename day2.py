@@ -7,7 +7,12 @@ class SpreadsheetTests(unittest.TestCase):
         spreadsheet = [[5, 1, 9, 5],
                        [7, 5, 3],
                        [2, 4, 6, 8]]            
-        self.assertEqual(calculate_checksum(spreadsheet), 18)
+        self.assertEqual(calculate_min_max_checksum(spreadsheet), 18)
+
+        spreadsheet  = [[5, 9, 2, 8],
+                        [9, 4, 7, 3],
+                        [3, 8, 6, 5]]
+        self.assertEqual(calculate_division_checksum(spreadsheet), 9)
 
         spreadsheet = [[1208, 412, 743, 57, 1097, 53, 71, 1029, 719, 133, 258, 69, 1104, 373, 367, 365],
                         [4011, 4316, 1755, 4992, 228, 240, 3333, 208, 247, 3319, 4555, 717, 1483, 4608, 1387, 3542],
@@ -25,12 +30,23 @@ class SpreadsheetTests(unittest.TestCase):
                         [8702, 6973, 203, 4401, 8135, 7752, 1704, 8890, 182, 9315, 255, 229, 6539, 647, 6431, 6178],
                         [2290, 157, 2759, 3771, 4112, 2063, 153, 3538, 3740, 130, 3474, 1013, 180, 2164, 170, 189],
                         [525, 1263, 146, 954, 188, 232, 1019, 918, 268, 172, 1196, 1091, 1128, 234, 650, 420]]
-        self.assertEqual(calculate_checksum(spreadsheet), 54426)
+        self.assertEqual(calculate_min_max_checksum(spreadsheet), 54426)
+        self.assertEqual(calculate_division_checksum(spreadsheet), 0)
 
 
-def calculate_checksum(spreadsheet):
+def calculate_min_max_checksum(spreadsheet):
     return sum([max(row) - min(row) for row in spreadsheet])
 
+def calculate_division_checksum(spreadsheet):
+    result = 0
+    for row in spreadsheet:
+        for index, column in enumerate(row):
+            except_column = row[:index] + row[(index + 1):]
+            for item in except_column:
+                if item % column == 0:
+                    result +=item // column
+
+    return result
 
 if __name__ == '__main__':
     unittest.main()
