@@ -1,7 +1,7 @@
 import unittest
 
 
-class CaptchaSolverShould(unittest.TestCase):
+class CaptchaSolverTests(unittest.TestCase):
     def test_sum_all_digits_that_match_next_one(self):
         captcha = '1122'
         self.assertEqual(3, CaptchaSolver.solve(captcha))
