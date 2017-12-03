@@ -25,7 +25,7 @@ class SpreadsheetTests(unittest.TestCase):
                         [8702, 6973, 203, 4401, 8135, 7752, 1704, 8890, 182, 9315, 255, 229, 6539, 647, 6431, 6178],
                         [2290, 157, 2759, 3771, 4112, 2063, 153, 3538, 3740, 130, 3474, 1013, 180, 2164, 170, 189],
                         [525, 1263, 146, 954, 188, 232, 1019, 918, 268, 172, 1196, 1091, 1128, 234, 650, 420]]
-        self.assertEqual(54426, calculate_checksum(spreadsheet))  
+        self.assertEqual(calculate_checksum(spreadsheet), 54426)
 
 
 def calculate_checksum(spreadsheet):
