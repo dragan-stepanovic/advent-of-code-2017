@@ -45,8 +45,8 @@ def solve(captcha):
 
 def solve_halfway(captcha):
     digits = [int(digit) for digit in captcha]
-    return sum([digit for index, digit in enumerate(digits)
-                if digit == digits[(index + int(len(digits) / 2)) % len(digits)]])
+    halfway = len(digits) // 2
+    return sum([digit for digit, next in zip(digits, digits[halfway:] + digits[:halfway]) if digit == next])
 
 
 if __name__ == '__main__':
